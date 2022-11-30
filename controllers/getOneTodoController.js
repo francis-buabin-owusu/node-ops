@@ -1,14 +1,13 @@
 const Todos = require('../model')
+const mongoose = require('mongoose')
+const ObjectId = mongoose.Types.ObjectId
 
 const getOneTodoController = async (req, res) => {
-    const {id} = req.query
-
-    if(!id) return res.status(400) 
-
     try {
-        res.status(200).json(res.todo)
+        const todo = await Todos.findOne({_id : ObjectId(req.todoID)})
+        return res.status(200).json(todo)
     } catch (err) {
-        res.status(400).json({message: 'Bad request'})
+        return res.status(400).json({ message: err.message })
     }
 }
 

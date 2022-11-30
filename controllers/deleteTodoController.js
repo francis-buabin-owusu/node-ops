@@ -1,11 +1,13 @@
 const Todos = require('../model')
+const mongoose = require('mongoose')
+const ObjectId = mongoose.Types.ObjectId
 
-const deleteTodoController = async () => {
+const deleteTodoController = async (req, res) => {
     try {
-        await res.todo.remove()
-        res.status(200).json({ message: `Successfully deleted task: ${res.todo}` })
+        await Todos.findByIdAndDelete(ObjectId(req.todoID))
+        res.status(200).json({ message: `Deleted successfully` })
     } catch (err) {
-        res.status(500).json({ message: err.message })
+        res.status(400).json({ message: err.message })
     }
 }
 

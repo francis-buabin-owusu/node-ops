@@ -1,6 +1,6 @@
 const Todos = require('../model')
 
-const postTodoController = async () => { 
+const postTodoController = async (req, res) => { 
     const todo = new Todos({
         task: req.body.task,
         done: req.body.done

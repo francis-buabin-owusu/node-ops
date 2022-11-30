@@ -1,18 +1,17 @@
 const Todos = require('../model')
+const mongoose = require('mongoose')
+const ObjectId = mongoose.Types.ObjectId
 
-const editTodoController = async () => {
-    if (req.body.task != null) {
-        res.todo.task = req.body.task
-    }
-    if (req.body.done != null) {
-        res.todo.done = req.body.done
-    }
+const editTodoController = async (req, res) => {
+    const {task, done} = req.body
 
     try {
-        const updatedTodo = await res.todo.save()
-        res.status(200).json(updatedTodo)
+        if(!task) return res.status(400).json({message: 'Found empty fields'})
+
+        const updatedTodo = await Todos.findByIdAndUpdate(ObjectId(req.todoID), {task, done})
+        return res.status(200).json(updatedTodo)
     } catch (err) {
-        res.status(400).json({ message: err.message })
+        return res.status(400).json({ message: err.message })
     } 
 }
 

@@ -1,19 +1,11 @@
-const Todos = require('../model')
-
 const getID = async (req, res, next) => {
-    let todo
     try {
-        todo = await Todos.findById(req.params.id)
-        if (!todo) {
-            return res.status(404).json({ message: "TODO NOT FOUND" })
-        }
+        if(!req.params.id) return res.status(400).json({message: 'Id not found'})
+
+        req.todoID = req.params.id
     } catch (err) {
         return res.status(500).json({ message: err.message })
     }
-
-    // create a todo variable on the res obj
-    res.todo = todo
-
     next()
 }
 

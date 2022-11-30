@@ -8,12 +8,12 @@ const postTodoController = require('./controllers/postTodoController')
 const editTodoController = require('./controllers/editTodoController')
 const deleteTodoController = require('./controllers/deleteTodoController')
 
-const router = express.Router()
+const router = express.Router() 
 
 router.get('/todos', getAllTodosConteroller)
-router.get('/todos:id', getID, getOneTodoController)
+router.get('/todos/:id', getOneTodoController)
 router.post('/todos', postTodoController)
-router.patch('/todos:id', getID, editTodoController)
-router.delete('/todos:id', getID, deleteTodoController)
+router.patch('/todos/:id', getID, editTodoController)
+router.delete('/todos/:id', getID, deleteTodoController)
 
 module.exports = router

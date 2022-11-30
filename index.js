@@ -11,7 +11,7 @@ app.use(cors())
 app.use(express.json())
 app.use('/api', routes)
 
-mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://codingdrizzle:gateway_api${user}@todolist.vczak00.mongodb.net/todoList')
+mongoose.connect(`${process.env.MONGODB_URL}` || process.env.DATABASE_URL)
     .then(() => console.log('connected to db'))
     .catch((e) => console.error(e))
 
