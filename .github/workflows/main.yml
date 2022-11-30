@@ -23,12 +23,12 @@ jobs:
             username: ${{ secrets.DOCKERHUB_USERNAME }}
             password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-        - name: Build Docker Image
-          run: docker build . -f Dockerfile -t sample-node-app:latest
         # - name: Build Docker Image
         #   run: docker build . -f Dockerfile -t sample-node-app:latest
-        # - name: Build and push
-        #   uses: docker/build-push-action@v3
-        #   with:
-        #     push: true
-        #     tags: ${{secrets.DOCKERHUB_USERNAME}}/sample-node-app:latest
+        # - name: Build Docker Image
+        #   run: docker build . -f Dockerfile -t sample-node-app:latest
+        - name: Build and push
+          uses: docker/build-push-action@v3
+          with:
+            push: true
+            tags: ${{secrets.DOCKERHUB_USERNAME}}/sample-node-app:latest
