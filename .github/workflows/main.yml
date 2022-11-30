@@ -33,7 +33,7 @@ jobs:
           uses: docker/build-push-action@v3
           with:
             push: true
-            tags: user/app:latest
+            tags: ${{secrets.DOCKERHUB_USERNAME}}/sample-node-app:latest
         # -
         #   name: Build & Push to DockerHub
         #   run: docker build -t sample-node-app:latest . docker push ${{secrets.DOCKERHUB_USERNAME}}/sample-node-app
