@@ -5,13 +5,13 @@ require('dotenv').config()
 const routes = require('./router')
 
 const app = express()
-const port = process.env.PORT || 8080
+const port =  3000
 
 app.use(cors())
 app.use(express.json())
 app.use('/api', routes)
 
-mongoose.connect(`${process.env.MONGODB_URL}` || process.env.DATABASE_URL)
+mongoose.connect(`mongodb+srv://codingdrizzle:devopstry@todoapi.zb7jtva.mongodb.net/?retryWrites=true&w=majority` || process.env.DATABASE_URL)
     .then(() => console.log('connected to db'))
     .catch((e) => console.error(e))
 
