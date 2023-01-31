@@ -7,7 +7,7 @@ pipeline{
     stages {
         stage('docker-build') {
             steps {
-                sh 'docker build -t . owusufrancis100/nodeops:lts'
+                sh 'docker build . -t owusufrancis100/nodeops:lts'
             }
         }
 
