@@ -7,6 +7,7 @@ pipeline{
     stages {
         stage('docker-build') {
             steps {
+                sh 'chmod 777 /var/run/docker.sock'
                 sh 'docker build . -t owusufrancis100/nodeops:lts'
             }
         }
