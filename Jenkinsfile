@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKERHUB_CREDENTIALS = credentials('username')
     }
-    stages{
+    stages {
         stage('Greetings') {
             sh 'echo Hello World'
         }
@@ -29,5 +29,4 @@ pipeline {
     //    }
     //}
     }
-
 }
